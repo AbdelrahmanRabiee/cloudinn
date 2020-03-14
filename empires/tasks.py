@@ -1,6 +1,8 @@
 import requests
 import json
 
+from django.db import IntegrityError
+
 from celery.decorators import task
 
 from empires.models import Cost, Unit
@@ -20,9 +22,13 @@ def store_units():
     res = requests.get('https://age-of-empires-2-api.herokuapp.com/api/v1/units')
     json_data = res.json()
     for obj in json_data['units']:
-        result =  any(elem in ['Wood', 'Food', 'Stone', 'Gold']  for elem in obj['cost'].keys()) 
-        if result:  
-            cost = Cost.objects.create(**obj['cost'])
-            obj['cost'] = cost
-        obj['cost'] = None    
-        Unit.objects.create(**obj)
+        # catch unique constraint if user hits api and data already stored in db
+        try:
+            result =  any(elem in ['Wood', 'Food', 'Stone', 'Gold']  for elem in obj['cost'].keys()) 
+            if result:  
+                cost = Cost.objects.create(**obj['cost'])
+                obj['cost'] = cost
+            obj['cost'] = None    
+            Unit.objects.create(**obj)
+        except IntegrityError:
+            continue    
