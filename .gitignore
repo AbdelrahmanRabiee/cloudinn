@@ -342,3 +342,4 @@ blueridge/media/
 .env
 .envs/*
 !.envs/.local/
+*/migrations/*
