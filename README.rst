@@ -3,10 +3,10 @@ cloudinn
 
 Pre-interview technical assessment task!
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
+.. image:: https://img.shields.io/badge/built%20with-Django%20-ff69b4.svg
      :target: https://www.djangoproject.com/
      :alt: Built with Django
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+.. image:: https://img.shields.io/badge/built%20with-CELERY-000000.svg
      :target: http://www.celeryproject.org/
      :alt: CELERY  
 
@@ -40,6 +40,7 @@ To run the project on local machine you have to setup python3 and postgresql fir
     $ postgres=# \q
     $ sudo apt-get install redis-server
     $ sudo systemctl enable redis-server.service
+    $ git clone https://github.com/AbdelrahmanRabiee/cloudinn.git
     $ mkdir venv/
     $ virtualenv -p python3 venv
     $ source venv/bin/activate
