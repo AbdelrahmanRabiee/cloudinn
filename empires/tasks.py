@@ -28,7 +28,8 @@ def store_units():
             if result:  
                 cost = Cost.objects.create(**obj['cost'])
                 obj['cost'] = cost
-            obj['cost'] = None    
+            else:
+                obj['cost'] = None    
             Unit.objects.create(**obj)
         except IntegrityError:
             continue    

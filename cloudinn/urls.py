@@ -17,7 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
+from empires.urls import unit_router
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('empires.urls',namespace='empires')),
+    path('api/v1/', include('rest_framework.urls')),
+    path('api/v1/', include(unit_router.urls)),
+
 ]
