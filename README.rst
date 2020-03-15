@@ -63,4 +63,12 @@ To run the project on local machine you have to setup python3 and postgresql fir
     DEBUG=True
     ALLOWED_HOSTS=0.0.0.0,127.0.0.1
     CELERY_BROKER_URL='redis://localhost:6379'
-    CELERY_RESULT_BACKEND='redis://localhost:6379'   
+    CELERY_RESULT_BACKEND='redis://localhost:6379' 
+
+
+Project Testing
+^^^^^^^^^^^^^^^
+
+     To run test cases do below commands::
+
+          $ python manage.py test empires.tests.test_api.TestUnitAPI      
